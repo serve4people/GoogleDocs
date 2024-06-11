@@ -28,7 +28,9 @@ const TextEditor = () => {
   const [socket, setSocket] = useState();
   const [quill, setQuill] = useState();
   useEffect(() => {
-    const s = io("googledocsbackend-production.up.railway.app");
+    const s = io("googledocsbackend-production.up.railway.app", {
+      transports: ["websocket"],
+    });
     setSocket(s);
     return () => {
       s.disconnect();
